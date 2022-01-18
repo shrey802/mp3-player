@@ -1,0 +1,114 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  background-color: #465461;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Sacramento', cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.music-container{
+  background-color: #729CA2;
+  border-radius: 15px;
+  box-shadow: 0 20px 20px 0 #ECF3F4;
+  display: flex;
+  padding: 20px 30px;
+  position: relative;
+  z-index: 10;
+  margin: 100px 0;
+}
+.img-container{
+  width: 110px;
+  position: relative;
+}
+.img-container::after{
+  content: '';
+  background-color: #fff;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.img-container img{
+  width: inherit;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: rotate 3s linear infinite;
+  animation-play-state: paused;
+}
+.music-container.play .img-container img{
+  animation-play-state: running;
+}
+@keyframes rotate {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+.navigation{
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.action-btn{
+  border: 0;
+  padding: 10px;
+  margin: 0 20px;
+  font-size: 15px;
+  background-color: #729CA2;
+  cursor: pointer;
+  color: #FAEEE7;
+}
+
+.action-btn:focus{
+  outline: 0;
+}
+.music-info{
+  background-color: #FFFDA2;
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: calc(100% - 40px);
+  padding: 10px 10px 10px 150px;
+  opacity: 0;
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  z-index: 0;
+}
+.music-container.play .music-info{
+  transform: translateY(-100%);
+  opacity: 1;
+}
+.music-info h4{
+  margin: 0;
+}
+.progress-container{
+  background-color: #C7B198;
+  height: 4px;
+  width: 100%;
+  cursor: pointer;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+.progress{
+  background-color: #E60965;
+  border-radius: 5px;
+  height: 100%;
+  width: 0;
+  transition: width 0.1s linear;
+}
